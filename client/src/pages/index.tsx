@@ -5,15 +5,12 @@ import { Post } from '@/components/Post';
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <MainLayout>
-        <div className="mx-20px maxw-600px">
-          <Post />
-          <Post />
-          <Post />
-        </div>
-      </MainLayout>
-    </>
+    <MainLayout>
+      <div className="posts pt-20px">
+        <Post />
+        <Post />
+        <Post />
+      </div>
+    </MainLayout>
   );
 }

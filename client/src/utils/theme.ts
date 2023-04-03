@@ -1,6 +1,7 @@
 export const themeOptions = {
   colors: {
-    primary: '#ff4912',
+    // primary: '#ff4912',
+    primary: '#CB3C2E',
   },
   lightMode: {
     background: '#f2f2f2',
@@ -11,6 +12,7 @@ export const themeOptions = {
     // backgroundSecondary: '#1f1f1f',
     background: '#000',
     backgroundSecondary: '#1f1f1f',
+    primary: '#CB3C2E',
   },
   font: {
     family: {

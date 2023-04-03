@@ -3,6 +3,7 @@
   height: 50px;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -14,4 +15,11 @@
 }
 .header {
   height: 100%;
+
+  &__left {
+    flex: 0 0 30%;
+  }
+  &__right {
+    flex: 0 0 30%;
+  }
 }

@@ -1,9 +1,20 @@
 import clsx from 'clsx';
-import { Avatar, Button, Icon, IconButton } from 'cutie-ui';
+import {
+  Avatar,
+  Button,
+  Icon,
+  IconButton,
+  Menu,
+  MenuItem,
+  useMenu,
+} from 'cutie-ui';
 import React from 'react';
 import styles from './FullPost.module.scss';
 
 export const Comment = () => {
+  const { menuOpen, handleClickMenu, handleCloseMenu, menuAnchorEl } =
+    useMenu();
+
   return (
     <div className="mt-20px">
       <div className="df aic mb-10px">
@@ -46,7 +57,12 @@ export const Comment = () => {
           12
         </div>
         <Button color="textSecondary">Ответить</Button>
-        <IconButton color="textSecondary">
+        <IconButton
+          onClick={(e) => {
+            handleClickMenu(e);
+          }}
+          color="textSecondary"
+        >
           <Icon fontSize={'1.3rem'}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +81,35 @@ export const Comment = () => {
           </Icon>
         </IconButton>
       </div>
+      <Menu open={menuOpen} anchorEl={menuAnchorEl} onClose={handleCloseMenu}>
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleCloseMenu(e);
+          }}
+        >
+          Редактировать
+        </MenuItem>
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleCloseMenu(e);
+          }}
+        >
+          Удалить
+        </MenuItem>
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleCloseMenu(e);
+          }}
+        >
+          Репорт
+        </MenuItem>
+      </Menu>
     </div>
   );
 };

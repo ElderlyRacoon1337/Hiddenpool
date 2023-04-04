@@ -1,58 +1,70 @@
 import React from 'react';
 import styles from './Post.module.scss';
 import clsx from 'clsx';
-import { Avatar, Icon, IconButton } from 'cutie-ui';
+import { Avatar, Icon, IconButton, Menu, MenuItem, useMenu } from 'cutie-ui';
 import Link from 'next/link';
 
 export const Post = () => {
+  const { menuOpen, handleClickMenu, handleCloseMenu, menuAnchorEl } =
+    useMenu();
+
   return (
     <Link href="/post/123">
       <div className={clsx(styles.post, 'maxw-650px')}>
-        <div className={clsx(styles.post__header, 'df aic jcsb')}>
-          <div className="df aic ">
-            <Avatar
-              src="https://www.gamersdecide.com/sites/default/files/lina_1.jpg"
-              width={'1.5rem'}
-              className="mr-10px"
-              variant="rounded"
-            />
-            <p className="mr-10px">Павел Литов</p>
-            <p className="textSecondary">6 часов назад</p>
+        <div className="px-20px">
+          <div className={clsx(styles.post__header, 'df aic jcsb')}>
+            <div className="df aic ">
+              <Avatar
+                src="https://www.gamersdecide.com/sites/default/files/lina_1.jpg"
+                width={'1.5rem'}
+                className="mr-10px"
+                variant="rounded"
+              />
+              <p className="mr-10px">Павел Литов</p>
+              <p className="textSecondary">6 часов назад</p>
+            </div>
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                handleClickMenu(e);
+              }}
+              color="textPrimary"
+            >
+              <Icon fontSize={'1.5rem'}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                  />
+                </svg>
+              </Icon>
+            </IconButton>
           </div>
-          <IconButton color="textPrimary">
-            <Icon fontSize={'1.5rem'}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                />
-              </svg>
-            </Icon>
-          </IconButton>
+          <h2 className={styles.title}>
+            Команда Darkside одержала победу над BetBoom
+          </h2>
+          <p className={clsx(styles.text, 'fslg')}>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
+            quia cupiditate quidem hic? Autem deserunt eligendi illo in est
+            sint, blanditiis debitis voluptatem voluptate a adipisci, illum
+            fugit sit reprehenderit.
+          </p>
         </div>
-        <h2 className={styles.title}>
-          Команда Darkside одержала победу над BetBoom
-        </h2>
-        <p className={clsx(styles.text, 'fslg')}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit
-          quia cupiditate quidem hic? Autem deserunt eligendi illo in est sint,
-          blanditiis debitis voluptatem voluptate a adipisci, illum fugit sit
-          reprehenderit.
-        </p>
         <img
           className={styles.image}
-          src="https://game-tournaments.com/media/news/n43904.jpeg"
+          src="https://gazetavyborg.ru/userfls/news/news_cover_slider/5/46840_internatsionalnaya-komanda-.jpg"
           alt=""
         />
-        <div className="df aic mt-10px">
+        <div className="df aic mt-10px px-20px">
           <div className="like df aic mr-10px">
             <IconButton color="textSecondary">
               <Icon>
@@ -118,6 +130,35 @@ export const Post = () => {
           </div>
         </div>
       </div>
+      <Menu open={menuOpen} anchorEl={menuAnchorEl} onClose={handleCloseMenu}>
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleCloseMenu(e);
+          }}
+        >
+          Редактировать
+        </MenuItem>
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleCloseMenu(e);
+          }}
+        >
+          Удалить
+        </MenuItem>
+        <MenuItem
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleCloseMenu(e);
+          }}
+        >
+          Репорт
+        </MenuItem>
+      </Menu>
     </Link>
   );
 };

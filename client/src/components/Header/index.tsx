@@ -55,7 +55,7 @@ export const Header = () => {
                   />
                 </svg>
               </Icon>
-              <h2 className={styles.logo}>Hiddenpool</h2>
+              <h2 className={styles.logo}>Hidden pool</h2>
             </Link>
             <div className={clsx(styles.menu, 'df aic ml-10px')}>
               <Button variant="text" color="white">
